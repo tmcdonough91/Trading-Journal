@@ -23,7 +23,9 @@ P = dict(
     min_price=10.0, min_dollar_vol20=25e6,
     # FP1 REST NEAR HIGHS: close within pct of 52wk high AND 5d true-range
     # average contracted vs the prior 20d
-    fp1_pct_of_high=0.95, fp1_tr_contraction=0.60,
+    # (fp1_tr_contraction 0.60->0.70 after the first full-universe run 2026-09-06:
+    #  0.60 yielded ZERO flags across 560 names; 0.70 yields ~7 quality rests)
+    fp1_pct_of_high=0.95, fp1_tr_contraction=0.70,
     # FP2 PULLBACK TO STRUCTURE: rising 50d SMA, close near it, real prior trend
     fp2_sma_rise_lookback=10, fp2_dist_to_sma=0.03, fp2_min_63d_return=0.10,
     # FP3 VOLUME ANOMALY: last-day RVOL, or week vs prior-4wk volume
