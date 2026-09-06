@@ -1,0 +1,19 @@
+# Non-S&P-500 single names worth screening — liquid US-listed only, one per line.
+# Duplicates against the S&P list are harmless (the fetcher dedupes).
+# Edited by hand; add/remove at the quarterly universe review.
+ASML
+TSM
+ARM
+SHOP
+SE
+MELI
+SNOW
+MSTR
+RBLX
+HOOD
+COIN
+NET
+DDOG
+ZS
+OKTA
+BSY

@@ -1,0 +1,51 @@
+# Liquid ETF slice of the screen universe — one symbol per line, # comments allowed.
+# Edited by hand; refresh at the quarterly universe review.
+# Broad / size
+SPY
+QQQ
+IWM
+DIA
+MDY
+RSP
+# Sectors (SPDR)
+XLK
+XLF
+XLE
+XLV
+XLI
+XLY
+XLP
+XLU
+XLB
+XLRE
+XLC
+# Industry / thematic
+SMH
+SOXX
+IGV
+XBI
+IBB
+ITB
+XHB
+KRE
+KBE
+XOP
+OIH
+XRT
+JETS
+IYT
+ITA
+PAVE
+TAN
+URA
+ICLN
+# Metals / commodities-linked equities + majors
+GDX
+GDXJ
+SIL
+COPX
+GLD
+SLV
+USO
+# Rates (context + tradeable structure)
+TLT
