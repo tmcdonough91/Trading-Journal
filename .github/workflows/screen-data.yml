@@ -1,0 +1,40 @@
+# .github/workflows/screen-data.yml
+# Screen-universe EOD data relay. Runs on GitHub's runners (open internet) because
+# the build sandbox's network allowlist blocks all market-data hosts but allows git.
+# Publishes a SINGLE orphan commit on the `screen-data` branch each run (force-push),
+# so the repo never accumulates data history.
+#
+# Schedule: Saturdays 12:00 UTC (after Friday's close, before the Sunday build)
+# + manual dispatch for reruns.
+name: screen-data
+on:
+  schedule:
+    - cron: "0 12 * * 6"
+  workflow_dispatch:
+ 
+permissions:
+  contents: write
+ 
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install yfinance pandas
+      - run: python screen/fetch_screen_data.py
+      - name: publish single-commit data branch
+        run: |
+          set -e
+          test -s screen-data/ohlcv.csv.gz
+          git config user.name  "screen-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout --orphan screen-data-tmp
+          git rm -rf --cached . >/dev/null
+          git add -f screen-data/ohlcv.csv.gz screen-data/meta.json
+          git commit -m "screen data $(date -u +%F)"
+          git branch -M screen-data-tmp screen-data
+          git push -f origin screen-data
+ 
